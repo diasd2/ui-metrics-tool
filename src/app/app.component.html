@@ -13,19 +13,25 @@
 
 <br/>
 
-<table class="metrics-table">
-  <tr>
-    <th *ngFor="let col of columns">{{col}}</th>
-  </tr>
-  <tr *ngFor="let metric of metrics | tableFilter: category" on-click="onRowElementClick(metric)">
-    <td>{{metric.id}}</td>
-    <td>{{metric.label}}</td>
-    <td>{{metric.value}}</td>
-    <td>{{metric.type}}</td>
-    <td>{{metric.description}}</td>
-    <td>{{metric.category}}</td>
-  </tr>
-</table>
+<div class="table-wrapper">
+  <table class="metrics-table">
+    <thead>
+    <tr>
+      <th *ngFor="let col of columns">{{col}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let metric of metrics | tableFilter: category" on-click="onRowElementClick(metric)">
+      <td>{{metric.id}}</td>
+      <td>{{metric.label}}</td>
+      <td>{{metric.value}}</td>
+      <td>{{metric.type}}</td>
+      <td>{{metric.description}}</td>
+      <td>{{metric.category}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
 <br/>
 
