@@ -6,9 +6,7 @@ import {Metrics} from './Metrics';
 })
 export class TableFilterPipe implements PipeTransform {
 
-  transform(list: Metrics[], value: string) {
-
-
+  transform(list: Metrics[], value: string): Metrics[] {
     return value ? list.filter(item => item.category === value) : list;
   }
 

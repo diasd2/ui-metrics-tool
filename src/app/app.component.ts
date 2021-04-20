@@ -25,10 +25,20 @@ export class AppComponent implements OnInit {
     });
   }
 
+  /**
+   * Triggered when a row is clicked
+   *
+   * @param rowEl - the row element clicked
+   */
   onRowElementClick(rowEl: Metrics): void {
-    console.log('#####', rowEl);
+    console.log('##Element clicked: ', rowEl);
   }
 
+  /**
+   * Get available categories from all records
+   *
+   * @param data - input data array
+   */
   getAvailableCategories(data: Metrics[]): any[] {
     return data.reduce((acc: any[], metric: Metrics) => {
       if (!acc.includes(metric.category)) {

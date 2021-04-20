@@ -8,7 +8,7 @@ import {Metrics} from '../Metrics';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.scss']
 })
-export class BarChartComponent implements OnInit, OnChanges {
+export class BarChartComponent implements OnChanges {
   @Input() item: string = '';
   @Input() data: Metrics[] = [];
 
@@ -25,9 +25,6 @@ export class BarChartComponent implements OnInit, OnChanges {
   barChartLegend = true;
   barChartPlugins = [];
 
-  ngOnInit(): void {
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.item?.currentValue !== changes.item?.previousValue) {
       this.buildDataModel();
@@ -35,6 +32,9 @@ export class BarChartComponent implements OnInit, OnChanges {
     }
   }
 
+  /**
+   * Build Data Model to be consumed
+   */
   buildDataModel(): void {
     const filteredData: Metrics[] = this.data.filter(item => item.category === this.item);
 
@@ -49,6 +49,13 @@ export class BarChartComponent implements OnInit, OnChanges {
     }, []);
   }
 
+  /**
+   * Builds Bar Chart component
+   *
+   * @param catLabel - the category label
+   * @param chartData - the chart values of y axis
+   * @param chartLabels - the chart values of x axis
+   */
   buildBarChart(catLabel: string, chartData: number[], chartLabels: string[]): void {
     this.barChartLabels = chartLabels;
     this.barChartData = [

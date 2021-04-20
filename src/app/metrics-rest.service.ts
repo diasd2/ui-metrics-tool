@@ -12,6 +12,9 @@ export class MetricsRestService {
 
   url = 'http://localhost:3000/Metrics/';
 
+  /**
+   * Get Metrics data
+   */
   getMetrics(): Observable<Metrics[]> {
     return this.http.get<Metrics[]>(this.url);
   }
