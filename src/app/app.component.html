@@ -297,13 +297,14 @@
 <h1>UI Metrics Tool</h1>
 <hr>
 
-<div class="form-group">
-  <strong>Category</strong>
-  <select class="form-control"
-          [(ngModel)]="category">
-    <option></option>
+<div class="select-category">
+  <h3>Category</h3>
+  <select [(ngModel)]="category">
+    <option value="">Select</option>
     <option *ngFor="let cat of categories">{{cat}}</option>
   </select>
+  <div class="select-category-arrow">
+  </div>
 </div>
 
 <br/><br/>

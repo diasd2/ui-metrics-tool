@@ -21,17 +21,21 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.metricsRestService.getMetrics().subscribe(response => {
       this.metrics = response;
-      this.categories = response.reduce((acc: any[], metric: Metrics) => {
-        if (!acc.includes(metric.category)) {
-          acc.push(metric.category);
-        }
-
-        return acc;
-      }, []);
+      this.categories = this.getAvailableCategories(response);
     });
   }
 
   onRowElementClick(rowEl: Metrics): void {
     console.log('#####', rowEl);
+  }
+
+  getAvailableCategories(data: Metrics[]): any[] {
+    return data.reduce((acc: any[], metric: Metrics) => {
+      if (!acc.includes(metric.category)) {
+        acc.push(metric.category);
+      }
+
+      return acc;
+    }, []);
   }
 }
